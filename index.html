@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send WhatsApp Message</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+        }
+        .container h2 {
+            color: #0072ff;
+            margin-bottom: 20px;
+        }
+        .container input, .container textarea, .container button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .container button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .container button:hover {
+            background-color: #128C7E;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .developer {
+          text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Send WhatsApp Message</h2>
+        <input type="text" id="phone" placeholder="Enter phone number" />
+        <span id="phoneError" class="error"></span>
+        <textarea id="message" placeholder="Enter your message"></textarea>
+        <span id="messageError" class="error"></span>
+        <button onclick="sendMessage()">Send WhatsApp</button>
+        <h6 class="developer">copyright @ Harshit Choudhary</h6>
+    </div>
+
+    <script>
+        function validatePhone(phone) {
+            const phonePattern = /^\d{10,15}$/;
+            return phonePattern.test(phone);
+        }
+
+        function sendMessage() {
+            var phone = document.getElementById("phone").value;
+            var message = document.getElementById("message").value;
+
+            var phoneError = document.getElementById("phoneError");
+            var messageError = document.getElementById("messageError");
+
+            var isValid = true;
+
+            if (!phone || !validatePhone(phone)) {
+                phoneError.textContent = "Please enter a valid phone number.";
+                isValid = false;
+            } else {
+                phoneError.textContent = "";
+            }
+
+            if (!message) {
+                messageError.textContent = "Please enter a message.";
+                isValid = false;
+            } else {
+                messageError.textContent = "";
+            }
+
+            if (!isValid) return;
+
+            var url = `https://wa.me/91${phone}?text=${encodeURIComponent(message)}`;
+
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
