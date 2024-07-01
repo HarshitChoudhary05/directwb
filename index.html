@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
+            background: #04b4ff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,41 +15,81 @@
             margin: 0;
         }
         .container {
-            background-color: #ffffff;
-            padding: 20px 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            width: 320px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            padding: 40px 30px;
+            box-sizing: border-box;
             text-align: center;
         }
         .container h2 {
-            color: #0072ff;
             margin-bottom: 20px;
+            font-size: 24px;
+            color: #333333;
         }
         .container input, .container textarea, .container button {
             width: 100%;
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
             box-sizing: border-box;
+            font-size: 16px;
+        }
+        .container input:focus, .container textarea:focus, .container button:focus {
+            outline: none;
+            border-color: #0072ff;
+            box-shadow: 0 0 5px rgba(0, 114, 255, 0.5);
         }
         .container button {
-            background-color: #25D366;
-            color: white;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #ffffff;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background 0.3s;
         }
         .container button:hover {
-            background-color: #128C7E;
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
         }
         .error {
             color: red;
             font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            display: block;
+            text-align: left;
         }
-        .developer {
-          text-align: center;
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .container h2 {
+                font-size: 22px;
+            }
+            .container input, .container textarea, .container button {
+                padding: 12px;
+                font-size: 14px;
+            }
+            .container button {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .container h2 {
+                font-size: 20px;
+            }
+            .container input, .container textarea, .container button {
+                padding: 10px;
+                font-size: 12px;
+            }
+            .container button {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -61,7 +101,6 @@
         <textarea id="message" placeholder="Enter your message"></textarea>
         <span id="messageError" class="error"></span>
         <button onclick="sendMessage()">Send WhatsApp</button>
-        <h6 class="developer">copyright @ Harshit Choudhary</h6>
     </div>
 
     <script>
