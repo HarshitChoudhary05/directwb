@@ -101,7 +101,7 @@
         <h2>Send WhatsApp Message</h2>
         <input type="text" id="phone" placeholder="Enter phone number" />
         <span id="phoneError" class="error"></span>
-        <textarea id="message" placeholder="Enter your message"></textarea>
+        <textarea id="message" placeholder="Enter your message (optional)"></textarea>
         <span id="messageError" class="error"></span>
         <button onclick="sendMessage()">Send WhatsApp</button>
         <h6 class="developer">copyright @ Harshit Choudhary</h6>
@@ -115,10 +115,10 @@
 
         function sendMessage() {
             var phone = document.getElementById("phone").value;
-           
+            var message = document.getElementById("message").value;
 
             var phoneError = document.getElementById("phoneError");
-           
+            var messageError = document.getElementById("messageError");
 
             var isValid = true;
 
@@ -129,8 +129,7 @@
                 phoneError.textContent = "";
             }
 
-        
-
+            // Message validation is no longer mandatory
             if (!isValid) return;
 
             var url = `https://wa.me/91${phone}?text=${encodeURIComponent(message)}`;
