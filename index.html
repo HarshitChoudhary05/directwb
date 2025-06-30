@@ -115,10 +115,10 @@
 
         function sendMessage() {
             var phone = document.getElementById("phone").value;
-            var message = document.getElementById("message").value;
+           
 
             var phoneError = document.getElementById("phoneError");
-            var messageError = document.getElementById("messageError");
+           
 
             var isValid = true;
 
@@ -129,12 +129,7 @@
                 phoneError.textContent = "";
             }
 
-            if (!message) {
-                messageError.textContent = "Please enter a message.";
-                isValid = false;
-            } else {
-                messageError.textContent = "";
-            }
+        
 
             if (!isValid) return;
 
